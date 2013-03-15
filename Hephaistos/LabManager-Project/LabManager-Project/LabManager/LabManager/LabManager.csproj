@@ -1,0 +1,373 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{5A1BC0E9-746A-4578-9FE7-B204870BE68E}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>LabManager</RootNamespace>
+    <AssemblyName>LabManager</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkProfile>
+    </TargetFrameworkProfile>
+    <FileAlignment>512</FileAlignment>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup />
+  <PropertyGroup>
+    <ApplicationIcon>LM-App.ico</ApplicationIcon>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationManifest>app.manifest</ApplicationManifest>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="C1.C1Report.4, Version=4.6.20123.54602, Culture=neutral, PublicKeyToken=594a0605db190bb9, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="C1.Win.C1Command.4, Version=4.0.20113.19503, Culture=neutral, PublicKeyToken=e808566f358766d8, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="C1.Win.C1Editor.4, Version=4.0.20113.82, Culture=neutral, PublicKeyToken=79882d576c6336da, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="C1.Win.C1FlexGrid.4, Version=4.6.20113.660, Culture=neutral, PublicKeyToken=79882d576c6336da, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="C1.Win.C1Input.4, Version=4.0.20113.33270, Culture=neutral, PublicKeyToken=7e7ff60f0c214f9a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="C1.Win.C1List.4, Version=4.1.20113.193, Culture=neutral, PublicKeyToken=6b24f8f981dbd7bc, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="C1.Win.C1Report.4, Version=4.6.20113.54463, Culture=neutral, PublicKeyToken=41780e2fc605e636, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="C1.Win.C1Ribbon.4, Version=4.0.20121.358, Culture=neutral, PublicKeyToken=79882d576c6336da, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="C1.Win.C1TrueDBGrid.4, Version=4.0.20121.61244, Culture=neutral, PublicKeyToken=75ae3fb0e2b1e0da, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="C1.Win.C1Win7Pack.4, Version=4.0.20121.16, Culture=neutral, PublicKeyToken=79882d576c6336da, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="Microsoft.VisualBasic" />
+    <Reference Include="MySql.Data, Version=6.4.4.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\..\Program Files\MySQL\Connector NET 6.4.4\Assemblies\v4.0\MySql.Data.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="PresentationCore" />
+    <Reference Include="ReachFramework" />
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Messaging" />
+    <Reference Include="System.Windows.Forms.DataVisualization" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="WindowsBase" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="..\..\lib\AssemblyLoad.cs">
+      <Link>AssemblyLoad.cs</Link>
+    </Compile>
+    <Compile Include="..\..\lib\ColorHelper.cs">
+      <Link>ColorHelper.cs</Link>
+    </Compile>
+    <Compile Include="..\..\lib\CopyPaste.cs">
+      <Link>CopyPaste.cs</Link>
+    </Compile>
+    <Compile Include="..\..\lib\CustomEditors.cs">
+      <Link>CustomEditors.cs</Link>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="..\..\lib\Definitions.cs">
+      <Link>Definitions.cs</Link>
+    </Compile>
+    <Compile Include="..\..\lib\FilterRow.cs">
+      <Link>FilterRow.cs</Link>
+    </Compile>
+    <Compile Include="..\..\lib\FlexGridHelper.cs">
+      <Link>FlexGridHelper.cs</Link>
+    </Compile>
+    <Compile Include="..\..\lib\IniHandler.cs">
+      <Link>IniHandler.cs</Link>
+    </Compile>
+    <Compile Include="..\..\lib\Magazine_Helper.cs">
+      <Link>Magazine_Helper.cs</Link>
+    </Compile>
+    <Compile Include="..\..\lib\MultiColumnEditor.cs">
+      <Link>MultiColumnEditor.cs</Link>
+    </Compile>
+    <Compile Include="..\..\lib\MySQL_Connector.cs">
+      <Link>MySQL_Connector.cs</Link>
+    </Compile>
+    <Compile Include="..\..\lib\MySQL_HelperClass.cs">
+      <Link>MySQL_HelperClass.cs</Link>
+    </Compile>
+    <Compile Include="..\..\lib\PipeClient.cs">
+      <Link>PipeClient.cs</Link>
+    </Compile>
+    <Compile Include="..\..\lib\PipeServer.cs">
+      <Link>PipeServer.cs</Link>
+    </Compile>
+    <Compile Include="..\..\lib\Routing.cs">
+      <Link>Routing.cs</Link>
+    </Compile>
+    <Compile Include="..\..\lib\Save.cs">
+      <Link>Save.cs</Link>
+    </Compile>
+    <Compile Include="..\..\lib\TCPIP.cs">
+      <Link>TCPIP.cs</Link>
+    </Compile>
+    <Compile Include="..\..\lib\TranslateString.cs">
+      <Link>TranslateString.cs</Link>
+    </Compile>
+    <Compile Include="..\..\lib\UITypeEditorControl.cs">
+      <Link>UITypeEditorControl.cs</Link>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="..\..\lib\WinAPI.cs">
+      <Link>WinAPI.cs</Link>
+    </Compile>
+    <Compile Include="Administration_Form.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Administration_Form.Designer.cs">
+      <DependentUpon>Administration_Form.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AutoDetection.cs" />
+    <Compile Include="InterfaceAnalyse.cs" />
+    <Compile Include="RobotAdmin_Form.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RobotAdmin_Form.Designer.cs">
+      <DependentUpon>RobotAdmin_Form.cs</DependentUpon>
+    </Compile>
+    <Compile Include="RobotAnalyse.cs" />
+    <Compile Include="RobotInformationForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RobotInformationForm.Designer.cs">
+      <DependentUpon>RobotInformationForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="RobotPosition_Form.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RobotPosition_Form.Designer.cs">
+      <DependentUpon>RobotPosition_Form.cs</DependentUpon>
+    </Compile>
+    <Compile Include="InterfaceTest_Form.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="InterfaceTest_Form.Designer.cs">
+      <DependentUpon>InterfaceTest_Form.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Machine_Configuration_Form.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Machine_Configuration_Form.Designer.cs">
+      <DependentUpon>Machine_Configuration_Form.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Magazine_Driver.cs" />
+    <Compile Include="RobotRemoteControlAnalyse.cs" />
+    <Compile Include="RoutingCheck.cs" />
+    <Compile Include="RoutingCommand.cs" />
+    <Compile Include="Routing_Form.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Routing_Form.Designer.cs">
+      <DependentUpon>Routing_Form.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SampleListTGA.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SampleListTGA.Designer.cs">
+      <DependentUpon>SampleListTGA.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ScannerForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ScannerForm.Designer.cs">
+      <DependentUpon>ScannerForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Select_Form.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Select_Form.Designer.cs">
+      <DependentUpon>Select_Form.cs</DependentUpon>
+    </Compile>
+    <Compile Include="LabManager_Form.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="LabManager_Form.Designer.cs">
+      <DependentUpon>LabManager_Form.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Configuration_Form.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Configuration_Form.Designer.cs">
+      <DependentUpon>Configuration_Form.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TCPIPAnalyse.cs" />
+    <Compile Include="TCPIP_Helper.cs" />
+    <Compile Include="TGAAnalyse.cs" />
+    <Compile Include="TimeForAlarmForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TimeForAlarmForm.Designer.cs">
+      <DependentUpon>TimeForAlarmForm.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="Administration_Form.resx">
+      <DependentUpon>Administration_Form.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RobotAdmin_Form.resx">
+      <DependentUpon>RobotAdmin_Form.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RobotInformationForm.resx">
+      <DependentUpon>RobotInformationForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RobotPosition_Form.resx">
+      <DependentUpon>RobotPosition_Form.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="InterfaceTest_Form.resx">
+      <DependentUpon>InterfaceTest_Form.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Machine_Configuration_Form.resx">
+      <DependentUpon>Machine_Configuration_Form.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Routing_Form.resx">
+      <DependentUpon>Routing_Form.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SampleListTGA.resx">
+      <DependentUpon>SampleListTGA.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ScannerForm.resx">
+      <DependentUpon>ScannerForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Select_Form.resx">
+      <DependentUpon>Select_Form.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LabManager_Form.resx">
+      <DependentUpon>LabManager_Form.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\licenses.licx" />
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <EmbeddedResource Include="Configuration_Form.resx">
+      <DependentUpon>Configuration_Form.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TimeForAlarmForm.resx">
+      <DependentUpon>TimeForAlarmForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="app.config" />
+    <None Include="app.manifest">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Resources\x.png" />
+    <EmbeddedResource Include="Resources\Redo.png" />
+    <EmbeddedResource Include="Resources\Save.png" />
+    <EmbeddedResource Include="Resources\Undo.png" />
+    <None Include="Resources\color-icon.png" />
+    <EmbeddedResource Include="LM-App.ico" />
+    <Content Include="Resources\plus.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.0,Profile=Client">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4 Client Profile %28x86 und x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Windows.Installer.3.1">
+      <Visible>False</Visible>
+      <ProductName>Windows Installer 3.1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
