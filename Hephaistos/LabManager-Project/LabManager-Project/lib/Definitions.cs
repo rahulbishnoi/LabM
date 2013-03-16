@@ -298,6 +298,7 @@ enum CopyPasteObjectType
                 if (inis != null)
                 {
                     strConnection = "server= " + inis.GetValue("DB", "server") + ";User Id=" + inis.GetValue("DB", "UserId") + ";password=mysql"  + ";database=" + inis.GetValue("DB", "database") + ";Persist Security Info=no";
+                 //   strConnection = "server= " + inis.GetValue("DB", "server") + ";User Id=" + inis.GetValue("DB", "UserId") + ";password=" + inis.GetValue("DB", "password") + ";database=" + inis.GetValue("DB", "database") + ";Persist Security Info=no";
          
                 }
 

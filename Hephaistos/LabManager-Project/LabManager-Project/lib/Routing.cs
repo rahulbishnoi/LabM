@@ -39,6 +39,29 @@ namespace Routing
             return SQL_Statement;
 
         }
+        public void createViewForRightTree()
+        {
+            myHC.return_SQL_Statement("drop view tableView1");
+            String sqlStatement = "create view tableView1 as select t1.commandValue1,t1.commandValue0,t1.commandValue2,t1.Description,t2.SampleType_ID,t2.Position_ID,t2.idrouting_position_entries,t3.Machine_ID,t3.Machine_Position_ID   from routing_commands as t1 join routing_position_entries as t2 on t1.RoutingPositionEntry_ID = t2.idrouting_position_entries join routing_positions as t3 on t2.Position_ID = t3.idrouting_positions";
+            myHC.return_SQL_Statement(sqlStatement);
+        }
+
+        public DataTable GetDatatableForUnitsForSearch(String parm)
+        {
+            DataTable dataTableUnits = null;
+            string SQL_StatementUnits;
+            try
+            {
+                SQL_StatementUnits = "SELECT DISTINCT Machine_ID from tableView1 where (commandValue1=\'"+parm+"\') OR (commandValue0=\'"+parm+"\') OR (commandValue2=\'"+parm+"\') OR (description=\'"+parm+"\')";
+                DataSet dsUnits = new DataSet();
+                dsUnits.Clear();
+                dsUnits = myHC.GetDataSetFromSQLCommand(SQL_StatementUnits);
+                dataTableUnits = dsUnits.Tables[0];
+            }
+            catch (Exception ex) { mySave.InsertRow((int)Definition.Message.D_ALARM, ex.ToString()); }
+            return dataTableUnits;
+        }
+
 
 
         public DataTable GetDataTableForUnitsFOrRightTree(String parm)
@@ -63,11 +86,51 @@ namespace Routing
            
             //SQL_Statement = "SELECT DISTINCT machine_ID from routing_positions where idrouting_positions in  (select position_ID from routing_position_entries where idrouting_position_entries in (select RoutingPositionEntry_ID from routing_commands where (commandValue0 = " + parm + ") OR (commandValue1=" + parm + ") OR (commandValue2=" + parm + ") OR (commandValue3=" + parm + ") OR (description=" + parm + "))) UNION SELECT DISTINCT machine_ID from routing_positions where idrouting_positions in  (select position_ID from routing_position_entries where idrouting_position_entries in (select RoutingPositionEntry_ID from routing_conditions where (valueName = " + parm + ") OR (value=" + parm + ") OR (description=" + parm + ")))";
             //SQL_Statement = "SELECT DISTINCT machine_ID from routing_positions where idrouting_positions in  (select position_ID from routing_position_entries where idrouting_position_entries in (select RoutingPositionEntry_ID from routing_commands where (commandValue0 =\' " + parm + "\') OR (commandValue1=\'" + parm + "\') OR (commandValue2=\'" + parm + "\') OR (commandValue3=\'" + parm + "\') OR (description=\'" + parm + "\')))";
-            SQL_Statement = "SELECT DISTINCT machine_ID from routing_positions where idrouting_positions in  (select position_ID from routing_position_entries where idrouting_position_entries in (select RoutingPositionEntry_ID from routing_commands where (commandValue0 =\' " + parm + "\') OR (commandValue1=\'" + parm + "\') OR (commandValue2=\'" + parm + "\') OR (commandValue3=\'" + parm + "\') OR (description=\'" + parm + "\'))) UNION SELECT DISTINCT machine_ID from routing_positions where idrouting_positions in  (select position_ID from routing_position_entries where idrouting_position_entries in (select RoutingPositionEntry_ID from routing_conditions where (valueName =\' " + parm + "\') OR (value=\'" + parm + "\') OR description=\'" + parm + "\'))";
-           
+            if (!parm.StartsWith("%", false, null))
+            {
+                SQL_Statement = "SELECT DISTINCT machine_ID from routing_positions where idrouting_positions in  (select position_ID from routing_position_entries where idrouting_position_entries in (select RoutingPositionEntry_ID from routing_commands where (commandValue0 =\' " + parm + "\') OR (commandValue1=\'" + parm + "\') OR (commandValue2=\'" + parm + "\') OR (commandValue3=\'" + parm + "\') OR (description=\'" + parm + "\'))) UNION SELECT DISTINCT machine_ID from routing_positions where idrouting_positions in  (select position_ID from routing_position_entries where idrouting_position_entries in (select RoutingPositionEntry_ID from routing_conditions where (valueName =\' " + parm + "\') OR (value=\'" + parm + "\') OR description=\'" + parm + "\'))";
+            }
+            else
+            {
+                SQL_Statement = "SELECT DISTINCT machine_ID from routing_positions where idrouting_positions in  (select position_ID from routing_position_entries where idrouting_position_entries in (select RoutingPositionEntry_ID from routing_commands where (commandValue0 LIKE \'% " + parm + "\') OR (commandValue1 LIKE \'%" + parm + "\') OR (commandValue2 LIKE \'%" + parm + "\') OR (commandValue3 LIKE \'%" + parm + "\') OR (description LIKE \'%" + parm + "\'))) UNION SELECT DISTINCT machine_ID from routing_positions where idrouting_positions in  (select position_ID from routing_position_entries where idrouting_position_entries in (select RoutingPositionEntry_ID from routing_conditions where (valueName LIKE \'%" + parm + "\') OR (value LIKE \'%" + parm + "\') OR description LIKE \'%" + parm + "\'))";
+            }
             return SQL_Statement;
 
         }
+
+
+        public DataTable getDataTableForRightTreePositions(int nMachine_ID,String parm)
+        {
+            DataTable dataTablePositions = null;
+            string SQL_StatementPositions;
+            try
+            {
+                SQL_StatementPositions = "select DISTINCT Position_ID,Machine_Position_ID from tableView1 where Machine_ID ="+nMachine_ID+ " AND (commandValue1=\'"+parm+"\' OR commandValue0=\'"+parm+"\' OR commandValue2=\'"+parm+"\' OR description=\'"+parm+"\')";
+                DataSet dsPositions = new DataSet();
+                dsPositions.Clear();
+                dsPositions = myHC.GetDataSetFromSQLCommand(SQL_StatementPositions);
+                dataTablePositions = dsPositions.Tables[0];
+            }
+            catch (Exception ex) { mySave.InsertRow((int)Definition.Message.D_ALARM, ex.ToString()); }
+            return dataTablePositions;
+        }
+
+        public DataTable GetDataTableForRightTreeSampleTypes(int nRouting_Position_ID,String parm,int nMachine_ID)
+        {
+            DataTable dataTableSampleTypes = null;
+            string SQL_StatementSampleType;
+            try
+            {
+                SQL_StatementSampleType = "select DISTINCT SampleType_ID from tableView1 where Position_ID = "+nRouting_Position_ID+" AND Machine_ID=" + nMachine_ID + " AND (commandValue1=\'" + parm + "\' OR commandValue0=\'" + parm + "\' OR commandValue2=\'" + parm + "\' OR description=\'" + parm + "\')";
+                DataSet dsSampleTypes = new DataSet();
+                dsSampleTypes.Clear();
+                dsSampleTypes = myHC.GetDataSetFromSQLCommand(SQL_StatementSampleType);
+                dataTableSampleTypes = dsSampleTypes.Tables[0];
+            }
+            catch (Exception ex) { mySave.InsertRow((int)Definition.Message.D_ALARM, ex.ToString()); }
+            return dataTableSampleTypes;
+        }
+
         public DataTable GetDataTableForPositions(int nMachine_ID)
         {
             DataTable dataTablePositions = null;

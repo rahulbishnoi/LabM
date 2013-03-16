@@ -140,14 +140,16 @@ namespace LabManager
             Int32.TryParse(myHC.GetUserInputDataByName("RoutingFormSplitter2Distance", "300"), out nSplitter2Distance);
             splitContainer2.SplitterDistance = nSplitter2Distance;
 
-
+            routingData.createViewForRightTree();
             //build tree (right side)
             treeView2.Visible = false;
             PopulateTree(treeView_routing.Nodes);
             if (ribbonCheckBox1.Checked)
             {
-                PopulateRightTree(treeView2.Nodes);
+                Populate(treeView2.Nodes);
+                ribbonTextBox_Search.Enabled = true;
             }
+            ribbonTextBox_Search.Enabled = false;
             CellStyle cs = c1FlexGrid_Conditions.Styles.Add("Added", c1FlexGrid_Conditions.Styles.Normal);
             cs.BackColor = SystemColors.Info;
             cs.Font = new Font(c1FlexGrid_Conditions.Font, FontStyle.Bold);
@@ -724,13 +726,134 @@ namespace LabManager
             bInputConditionOK = true;
 
         }
-        //Populate right tree 
-        private void PopulateRightTree(TreeNodeCollection ParentNodes)
+
+
+        private void Populate(TreeNodeCollection ParentNodes)
         {
+          
+            // build the routing tree
+            treeView2.Nodes.Clear();
+            int k = 0;
+            DataTable dtUnits = new DataTable();
+            string[] words = ribbonTextBox_Search.Text.Split(',');
+            List<String> units = new List<string>();
+            if (words.GetLength(0) > 1)
+            {
+                units.Add(words[1]);
+                formRightTree(units,ParentNodes,words[0]);
+            }
+            else
+            {
+                DataTable dt_units = new DataTable();
+                dt_units = routingData.GetDatatableForUnitsForSearch(words[0]);
+                Unit_IDs = new int[dt_units.Rows.Count];
+                foreach (DataRow dataRow_Units in dt_units.Rows) // every Unit
+                {
+                    int nMachine_ID = Int32.Parse(dataRow_Units.ItemArray[0].ToString());
+                    string strName = myHC.GetNameFromID((int)Definition.SQLTables.MACHINES, nMachine_ID);
+                    units.Add(strName);
+                    Unit_IDs[k++] = nMachine_ID;
+                    
+                }
+
+                formRightTree(units, ParentNodes, words[0]);
+            }
+        }
+
+        private void formRightTree(List<String> units,TreeNodeCollection ParentNodes,String parm){
 
             TreeNode tn_ParentStations = ParentNodes.Add("Stations");
             tn_ParentStations.ImageIndex = tn_ParentStations.SelectedImageIndex = 28;
 
+            foreach (String unit in units)
+            {
+                TreeNode tn_Units = null;
+                tn_Units = tn_ParentStations.Nodes.Add(unit);
+               // tn_Units.Tag = dataRow_Units;
+                // if (expandLevelUnits) { tn_Units.Expand(); } else { tn_Units.Collapse(); }
+                tn_Units.ImageIndex = tn_Units.SelectedImageIndex = 12;
+            
+    
+                DataTable dtPositions = new DataTable();
+                TreeNode tn_Positions = null;
+                    dtPositions = routingData.getDataTableForRightTreePositions(myHC.GetIDFromName((int)Definition.SQLTables.MACHINES,unit),parm);
+                    foreach (DataRow dataRowPositions in dtPositions.Rows) // every routing position
+                    {
+                        int nRouting_Position_ID = Int32.Parse(dataRowPositions.ItemArray[0].ToString());
+                        int nMachine_Position_ID = Int32.Parse(dataRowPositions.ItemArray[1].ToString());
+                        if (nMachine_Position_ID > 0)
+                        {
+                            string strPositionName = myHC.GetNameFromID((int)Definition.SQLTables.MACHINE_POSITIONS, nMachine_Position_ID);
+                            tn_Positions = tn_Units.Nodes.Add(strPositionName);
+                            tn_Positions.Tag = dataRowPositions;
+                            tn_Positions.ImageIndex = tn_Positions.SelectedImageIndex = 2;
+                            //  if (expandLevelPositions) { tn_Positions.Expand(); } else { tn_Positions.Collapse(); }
+
+                            TreeNode tn_SampleTypes = null;
+
+                            DataTable dtSampleTypes = new DataTable();
+                            dtSampleTypes = routingData.GetDataTableForRightTreeSampleTypes(nRouting_Position_ID, parm, myHC.GetIDFromName((int)Definition.SQLTables.MACHINES, unit));
+                            foreach (DataRow dataRowSampleTypes in dtSampleTypes.Rows) // every sample type
+                            {
+                                int nSampleType_ID = Int32.Parse(dataRowSampleTypes.ItemArray[0].ToString());
+                                string strSampleTypeName = myHC.GetNameFromID((int)Definition.SQLTables.SAMPLE_TYPE_LIST, nSampleType_ID);
+                                tn_SampleTypes = tn_Positions.Nodes.Add(strSampleTypeName);
+                                tn_SampleTypes.Tag = dataRowSampleTypes;
+
+                                if (nSampleType_ID == 1)
+                                {
+                                    tn_SampleTypes.ImageIndex = tn_SampleTypes.SelectedImageIndex = 21;
+                                }
+                                else if (nSampleType_ID == 2)
+                                {
+                                    tn_SampleTypes.ImageIndex = tn_SampleTypes.SelectedImageIndex = 22;
+                                }
+                                else
+                                {
+                                    tn_SampleTypes.ImageIndex = tn_SampleTypes.SelectedImageIndex = 23;
+                                }
+
+                                if (expandLevelSampleTypes) { tn_SampleTypes.Expand(); } else { tn_SampleTypes.Collapse(); }
+
+                                TreeNode tn_RoutingEntries = null;
+                                int nIndex = 0;
+                                DataTable dtRoutingEntries = new DataTable();
+                                dtRoutingEntries = routingData.GetDataTableForRoutingEntries(nRouting_Position_ID, nSampleType_ID);
+                                foreach (DataRow dataRowRoutingEntries in dtRoutingEntries.Rows) // every condition entry
+                                {
+                                    nIndex++;
+                                //    string strDescription = dataRowRoutingEntries.ItemArray[3].ToString();
+                                    string nNodeName = "Condition: " + nIndex.ToString();
+                              //      if (strDescription.Length > 0) { nNodeName = strDescription; }
+                                    tn_RoutingEntries = tn_SampleTypes.Nodes.Add(nNodeName);
+                                    tn_RoutingEntries.Tag = dataRowRoutingEntries;
+                                    tn_RoutingEntries.ImageIndex = tn_RoutingEntries.SelectedImageIndex = 18;
+                                    tn_RoutingEntries.Expand();
+
+                                    try
+                                    {
+                                        int idRoutingPositionEntry = (int)dataRowRoutingEntries.ItemArray[0];
+                                        if (idRoutingPositionEntry == nRoutingPositionForTree) { treeView_routing.SelectedNode = tn_RoutingEntries; }
+                                    }
+                                    catch { }
+
+                                }
+                            }
+                        }
+                    }
+            }
+
+
+
+        }
+        //Populate right tree 
+        private void PopulateRightTree(TreeNodeCollection ParentNodes)
+        {
+            TreeNode tn_ParentStations = ParentNodes.Add("Stations");
+            tn_ParentStations.ImageIndex = tn_ParentStations.SelectedImageIndex = 28;
+
+            treeView2.Nodes.Clear();
+            
             // build the routing tree
 
             TreeNode tn_Units = null;
@@ -741,6 +864,7 @@ namespace LabManager
             int k = 0;
             DataTable dtUnits = new DataTable();
             string[] words = ribbonTextBox_Search.Text.Split(',');
+          
             dtUnits = routingData.GetDataTableForUnitsFOrRightTree(words[0]);
             if (words.GetLength(0) >1)
             {
@@ -858,6 +982,7 @@ namespace LabManager
                     }
                 }
             }
+            treeView2.CollapseAll();
         }
 
         //build the tree on the left hand site 
@@ -5040,14 +5165,23 @@ namespace LabManager
            treeView2.Nodes.Clear();
            if (ribbonCheckBox1.Checked == true)
            {
-               PopulateRightTree(treeView2.Nodes);
+             
+               ribbonTextBox_Search.Enabled = true;
                treeView2.Visible = true;
            }
            if (ribbonCheckBox1.Checked == false)
            {
                treeView2.Visible = false;
+               ribbonTextBox_Search.Enabled = false;
            }
        }
+
+       private void p(object sender, EventArgs e)
+       {
+           Populate(treeView2.Nodes);
+       }
+
+      
 
      
 

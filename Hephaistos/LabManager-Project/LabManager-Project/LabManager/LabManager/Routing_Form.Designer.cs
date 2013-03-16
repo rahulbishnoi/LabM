@@ -122,7 +122,7 @@
             this.treeView_routing.Location = new System.Drawing.Point(0, 0);
             this.treeView_routing.Name = "treeView_routing";
             this.treeView_routing.SelectedImageIndex = 28;
-            this.treeView_routing.Size = new System.Drawing.Size(209, 476);
+            this.treeView_routing.Size = new System.Drawing.Size(209, 576);
             this.treeView_routing.TabIndex = 0;
             this.treeView_routing.AfterLabelEdit += new System.Windows.Forms.NodeLabelEditEventHandler(this.treeView_routing_AfterLabelEdit);
             this.treeView_routing.NodeMouseClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(this.treeView_routing_NodeMouseClick);
@@ -181,7 +181,7 @@
             this.c1FlexGrid_Conditions.Rows.Count = 1;
             this.c1FlexGrid_Conditions.Rows.DefaultSize = 19;
             this.c1FlexGrid_Conditions.SelectionMode = C1.Win.C1FlexGrid.SelectionModeEnum.ListBox;
-            this.c1FlexGrid_Conditions.Size = new System.Drawing.Size(687, 200);
+            this.c1FlexGrid_Conditions.Size = new System.Drawing.Size(687, 253);
             this.c1FlexGrid_Conditions.StyleInfo = resources.GetString("c1FlexGrid_Conditions.StyleInfo");
             this.c1FlexGrid_Conditions.TabIndex = 1;
             this.c1FlexGrid_Conditions.TabStop = false;
@@ -206,7 +206,7 @@
             this.button_Condition_Add.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.button_Condition_Add.ImageIndex = 31;
             this.button_Condition_Add.ImageList = this._imgList;
-            this.button_Condition_Add.Location = new System.Drawing.Point(6, 226);
+            this.button_Condition_Add.Location = new System.Drawing.Point(6, 279);
             this.button_Condition_Add.Margin = new System.Windows.Forms.Padding(2, 2, 0, 0);
             this.button_Condition_Add.Name = "button_Condition_Add";
             this.button_Condition_Add.Size = new System.Drawing.Size(73, 24);
@@ -222,7 +222,7 @@
             this.button_Condition_Delete.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.button_Condition_Delete.ImageIndex = 30;
             this.button_Condition_Delete.ImageList = this._imgList;
-            this.button_Condition_Delete.Location = new System.Drawing.Point(87, 226);
+            this.button_Condition_Delete.Location = new System.Drawing.Point(87, 279);
             this.button_Condition_Delete.Margin = new System.Windows.Forms.Padding(0);
             this.button_Condition_Delete.Name = "button_Condition_Delete";
             this.button_Condition_Delete.Padding = new System.Windows.Forms.Padding(2, 2, 0, 0);
@@ -239,7 +239,7 @@
             this.button_Condition_Save.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.button_Condition_Save.ImageIndex = 10;
             this.button_Condition_Save.ImageList = this._imgList;
-            this.button_Condition_Save.Location = new System.Drawing.Point(164, 226);
+            this.button_Condition_Save.Location = new System.Drawing.Point(164, 279);
             this.button_Condition_Save.Margin = new System.Windows.Forms.Padding(0);
             this.button_Condition_Save.Name = "button_Condition_Save";
             this.button_Condition_Save.Size = new System.Drawing.Size(64, 24);
@@ -351,7 +351,7 @@
             // pictureBox_Conditions
             // 
             this.pictureBox_Conditions.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.pictureBox_Conditions.Location = new System.Drawing.Point(672, 226);
+            this.pictureBox_Conditions.Location = new System.Drawing.Point(672, 279);
             this.pictureBox_Conditions.Name = "pictureBox_Conditions";
             this.pictureBox_Conditions.Size = new System.Drawing.Size(22, 22);
             this.pictureBox_Conditions.TabIndex = 12;
@@ -361,7 +361,7 @@
             // 
             this.c1Button_Condition_down.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.c1Button_Condition_down.Image = ((System.Drawing.Image)(resources.GetObject("c1Button_Condition_down.Image")));
-            this.c1Button_Condition_down.Location = new System.Drawing.Point(266, 227);
+            this.c1Button_Condition_down.Location = new System.Drawing.Point(266, 280);
             this.c1Button_Condition_down.Name = "c1Button_Condition_down";
             this.c1Button_Condition_down.Size = new System.Drawing.Size(24, 24);
             this.c1Button_Condition_down.TabIndex = 14;
@@ -372,7 +372,7 @@
             // 
             this.c1Button_Condition_up.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.c1Button_Condition_up.Image = ((System.Drawing.Image)(resources.GetObject("c1Button_Condition_up.Image")));
-            this.c1Button_Condition_up.Location = new System.Drawing.Point(296, 227);
+            this.c1Button_Condition_up.Location = new System.Drawing.Point(296, 280);
             this.c1Button_Condition_up.Name = "c1Button_Condition_up";
             this.c1Button_Condition_up.Size = new System.Drawing.Size(24, 24);
             this.c1Button_Condition_up.TabIndex = 13;
@@ -398,7 +398,7 @@
             // 
             this.splitContainer1.Panel2.Controls.Add(this.splitContainer2);
             this.splitContainer1.Panel2MinSize = 350;
-            this.splitContainer1.Size = new System.Drawing.Size(918, 480);
+            this.splitContainer1.Size = new System.Drawing.Size(918, 580);
             this.splitContainer1.SplitterDistance = 213;
             this.splitContainer1.SplitterWidth = 2;
             this.splitContainer1.TabIndex = 13;
@@ -446,8 +446,8 @@
             this.splitContainer2.Panel2.Controls.Add(this.numericUpDown_Commands);
             this.splitContainer2.Panel2.Padding = new System.Windows.Forms.Padding(6, 20, 6, 32);
             this.splitContainer2.Panel2MinSize = 150;
-            this.splitContainer2.Size = new System.Drawing.Size(703, 480);
-            this.splitContainer2.SplitterDistance = 256;
+            this.splitContainer2.Size = new System.Drawing.Size(703, 580);
+            this.splitContainer2.SplitterDistance = 309;
             this.splitContainer2.SplitterWidth = 2;
             this.splitContainer2.TabIndex = 0;
             // 
@@ -472,7 +472,7 @@
             // pictureBox_Command
             // 
             this.pictureBox_Command.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.pictureBox_Command.Location = new System.Drawing.Point(672, 210);
+            this.pictureBox_Command.Location = new System.Drawing.Point(672, 250);
             this.pictureBox_Command.Name = "pictureBox_Command";
             this.pictureBox_Command.Size = new System.Drawing.Size(22, 22);
             this.pictureBox_Command.TabIndex = 13;
@@ -483,7 +483,7 @@
             this.c1FlexGrid_Commands.AllowSorting = C1.Win.C1FlexGrid.AllowSortingEnum.None;
             this.c1FlexGrid_Commands.ColumnInfo = "8,1,0,0,0,95,Columns:1{Style:\"TextAlign:GeneralCenter;\";}\t2{Style:\"TextAlign:Gene" +
                 "ralCenter;\";}\t";
-            this.c1FlexGrid_Commands.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.c1FlexGrid_Commands.Dock = System.Windows.Forms.DockStyle.Top;
             this.c1FlexGrid_Commands.ExtendLastCol = true;
             this.c1FlexGrid_Commands.FocusRect = C1.Win.C1FlexGrid.FocusRectEnum.None;
             this.c1FlexGrid_Commands.KeyActionTab = C1.Win.C1FlexGrid.KeyActionEnum.MoveAcross;
@@ -493,7 +493,7 @@
             this.c1FlexGrid_Commands.Rows.DefaultSize = 19;
             this.c1FlexGrid_Commands.SelectionMode = C1.Win.C1FlexGrid.SelectionModeEnum.ListBox;
             this.c1FlexGrid_Commands.ShowErrors = true;
-            this.c1FlexGrid_Commands.Size = new System.Drawing.Size(687, 166);
+            this.c1FlexGrid_Commands.Size = new System.Drawing.Size(687, 210);
             this.c1FlexGrid_Commands.StyleInfo = resources.GetString("c1FlexGrid_Commands.StyleInfo");
             this.c1FlexGrid_Commands.TabIndex = 12;
             this.c1FlexGrid_Commands.VisualStyle = C1.Win.C1FlexGrid.VisualStyle.Office2007Blue;
@@ -514,7 +514,7 @@
             // 
             this.c1Button_command_up.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.c1Button_command_up.Image = ((System.Drawing.Image)(resources.GetObject("c1Button_command_up.Image")));
-            this.c1Button_command_up.Location = new System.Drawing.Point(297, 207);
+            this.c1Button_command_up.Location = new System.Drawing.Point(297, 247);
             this.c1Button_command_up.Name = "c1Button_command_up";
             this.c1Button_command_up.Size = new System.Drawing.Size(24, 24);
             this.c1Button_command_up.TabIndex = 15;
@@ -527,7 +527,7 @@
             this.button_Command_Add.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.button_Command_Add.ImageIndex = 31;
             this.button_Command_Add.ImageList = this._imgList;
-            this.button_Command_Add.Location = new System.Drawing.Point(6, 207);
+            this.button_Command_Add.Location = new System.Drawing.Point(8, 246);
             this.button_Command_Add.Name = "button_Command_Add";
             this.button_Command_Add.Size = new System.Drawing.Size(73, 24);
             this.button_Command_Add.TabIndex = 10;
@@ -542,7 +542,7 @@
             this.button_Command_Save.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.button_Command_Save.ImageIndex = 10;
             this.button_Command_Save.ImageList = this._imgList;
-            this.button_Command_Save.Location = new System.Drawing.Point(164, 207);
+            this.button_Command_Save.Location = new System.Drawing.Point(164, 246);
             this.button_Command_Save.Name = "button_Command_Save";
             this.button_Command_Save.Size = new System.Drawing.Size(64, 24);
             this.button_Command_Save.TabIndex = 12;
@@ -557,7 +557,7 @@
             this.button_Command_Delete.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.button_Command_Delete.ImageIndex = 30;
             this.button_Command_Delete.ImageList = this._imgList;
-            this.button_Command_Delete.Location = new System.Drawing.Point(87, 207);
+            this.button_Command_Delete.Location = new System.Drawing.Point(87, 246);
             this.button_Command_Delete.Name = "button_Command_Delete";
             this.button_Command_Delete.Size = new System.Drawing.Size(67, 24);
             this.button_Command_Delete.TabIndex = 12;
@@ -570,7 +570,7 @@
             // 
             this.c1Button_command_down.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.c1Button_command_down.Image = ((System.Drawing.Image)(resources.GetObject("c1Button_command_down.Image")));
-            this.c1Button_command_down.Location = new System.Drawing.Point(267, 207);
+            this.c1Button_command_down.Location = new System.Drawing.Point(267, 247);
             this.c1Button_command_down.Name = "c1Button_command_down";
             this.c1Button_command_down.Size = new System.Drawing.Size(24, 24);
             this.c1Button_command_down.TabIndex = 15;
@@ -594,7 +594,7 @@
             "<MT Machinetagname  3>",
             "<MT Machinetagname  0 3>",
             "<TIMESTAMP>"});
-            this.comboBox_Choice.Location = new System.Drawing.Point(365, 210);
+            this.comboBox_Choice.Location = new System.Drawing.Point(365, 246);
             this.comboBox_Choice.Name = "comboBox_Choice";
             this.comboBox_Choice.Size = new System.Drawing.Size(176, 21);
             this.comboBox_Choice.TabIndex = 15;
@@ -603,7 +603,7 @@
             // 
             this.button_AddChoise.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.button_AddChoise.Image = global::LabManager.Properties.Resources.plus;
-            this.button_AddChoise.Location = new System.Drawing.Point(337, 208);
+            this.button_AddChoise.Location = new System.Drawing.Point(337, 246);
             this.button_AddChoise.Name = "button_AddChoise";
             this.button_AddChoise.Size = new System.Drawing.Size(22, 23);
             this.button_AddChoise.TabIndex = 16;
@@ -615,7 +615,7 @@
             // 
             this.button_ColorPicker.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.button_ColorPicker.Image = global::LabManager.Properties.Resources.coloricon;
-            this.button_ColorPicker.Location = new System.Drawing.Point(668, 208);
+            this.button_ColorPicker.Location = new System.Drawing.Point(668, 265);
             this.button_ColorPicker.Name = "button_ColorPicker";
             this.button_ColorPicker.Size = new System.Drawing.Size(22, 23);
             this.button_ColorPicker.TabIndex = 19;
@@ -635,7 +635,7 @@
             "Var2",
             "Var3",
             "Var4"});
-            this.comboBox_Command_SampleProgram.Location = new System.Drawing.Point(743, 210);
+            this.comboBox_Command_SampleProgram.Location = new System.Drawing.Point(743, 267);
             this.comboBox_Command_SampleProgram.Name = "comboBox_Command_SampleProgram";
             this.comboBox_Command_SampleProgram.Size = new System.Drawing.Size(39, 21);
             this.comboBox_Command_SampleProgram.TabIndex = 10;
@@ -651,7 +651,7 @@
             "",
             "<WS SampleID>",
             "<WS ParentSampleID>"});
-            this.comboBox_CommandValue2.Location = new System.Drawing.Point(562, 210);
+            this.comboBox_CommandValue2.Location = new System.Drawing.Point(562, 246);
             this.comboBox_CommandValue2.Name = "comboBox_CommandValue2";
             this.comboBox_CommandValue2.Size = new System.Drawing.Size(45, 21);
             this.comboBox_CommandValue2.TabIndex = 14;
@@ -663,7 +663,7 @@
             this.comboBox_Command_MachineList.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBox_Command_MachineList.Items.AddRange(new object[] {
             ""});
-            this.comboBox_Command_MachineList.Location = new System.Drawing.Point(696, 210);
+            this.comboBox_Command_MachineList.Location = new System.Drawing.Point(696, 267);
             this.comboBox_Command_MachineList.Name = "comboBox_Command_MachineList";
             this.comboBox_Command_MachineList.Size = new System.Drawing.Size(41, 21);
             this.comboBox_Command_MachineList.TabIndex = 13;
@@ -672,7 +672,7 @@
             // numericUpDown_Commands
             // 
             this.numericUpDown_Commands.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.numericUpDown_Commands.Location = new System.Drawing.Point(613, 211);
+            this.numericUpDown_Commands.Location = new System.Drawing.Point(613, 246);
             this.numericUpDown_Commands.Maximum = new decimal(new int[] {
             -2147483648,
             0,
@@ -791,6 +791,7 @@
             // ribbonTextBox_Search
             // 
             this.ribbonTextBox_Search.Name = "ribbonTextBox_Search";
+            this.ribbonTextBox_Search.ChangeCommitted += new System.EventHandler(this.p);
             // 
             // ribbonSeparator7
             // 
@@ -831,17 +832,23 @@
             // 
             // c1StatusBar_Routing
             // 
-            this.c1StatusBar_Routing.Location = new System.Drawing.Point(0, 540);
+            this.c1StatusBar_Routing.Location = new System.Drawing.Point(0, 640);
             this.c1StatusBar_Routing.Name = "c1StatusBar_Routing";
             this.c1StatusBar_Routing.Size = new System.Drawing.Size(1131, 22);
             this.c1StatusBar_Routing.VisualStyle = C1.Win.C1Ribbon.VisualStyle.Office2007Blue;
             // 
             // treeView2
             // 
+            this.treeView2.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
+            this.treeView2.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.treeView2.Dock = System.Windows.Forms.DockStyle.Right;
+            this.treeView2.ImageIndex = 0;
+            this.treeView2.ImageList = this._imgList;
+            this.treeView2.ImeMode = System.Windows.Forms.ImeMode.Hiragana;
             this.treeView2.Location = new System.Drawing.Point(932, 53);
             this.treeView2.Name = "treeView2";
-            this.treeView2.Size = new System.Drawing.Size(199, 487);
+            this.treeView2.SelectedImageIndex = 28;
+            this.treeView2.Size = new System.Drawing.Size(199, 587);
             this.treeView2.TabIndex = 14;
             this.treeView2.MouseUp += new System.Windows.Forms.MouseEventHandler(this.treeView_routing1_MouseUp);
             // 
@@ -850,7 +857,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.ClientSize = new System.Drawing.Size(1131, 562);
+            this.ClientSize = new System.Drawing.Size(1131, 662);
             this.Controls.Add(this.treeView2);
             this.Controls.Add(this.comboBox_Operation);
             this.Controls.Add(this.comboBox_SampleType);
