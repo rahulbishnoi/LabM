@@ -846,144 +846,7 @@ namespace LabManager
 
 
         }
-        //Populate right tree 
-        private void PopulateRightTree(TreeNodeCollection ParentNodes)
-        {
-            TreeNode tn_ParentStations = ParentNodes.Add("Stations");
-            tn_ParentStations.ImageIndex = tn_ParentStations.SelectedImageIndex = 28;
-
-            treeView2.Nodes.Clear();
-            
-            // build the routing tree
-
-            TreeNode tn_Units = null;
-            TreeNode tn_Positions = null;
-            TreeNode tn_SampleTypes = null;
-            TreeNode tn_RoutingEntries = null;
-
-            int k = 0;
-            DataTable dtUnits = new DataTable();
-            string[] words = ribbonTextBox_Search.Text.Split(',');
-          
-            dtUnits = routingData.GetDataTableForUnitsFOrRightTree(words[0]);
-            if (words.GetLength(0) >1)
-            {
-                int machine_id = myHC.GetIDFromName((int)Definition.SQLTables.MACHINES, words[1]);
-                List<DataRow> listRow = new List<DataRow>();
-                foreach (DataRow row in dtUnits.Rows)
-                {
-                    int machine = Int32.Parse(row.ItemArray[0].ToString());
-                    if (machine != machine_id)
-                    {
-                        listRow.Add(row);
-                    }
-                }
-
-                foreach (DataRow row in listRow)
-                {
-                    dtUnits.Rows.Remove(row);
-                }
-            }
-            int rows = dtUnits.Rows.Count;
-            if (rows!=0)
-            {
-                Unit_IDs = new int[dtUnits.Rows.Count];
-                foreach (DataRow dataRow_Units in dtUnits.Rows) // every Unit
-                {
-                    int nMachine_ID = Int32.Parse(dataRow_Units.ItemArray[0].ToString());
-                    string strName = myHC.GetNameFromID((int)Definition.SQLTables.MACHINES, nMachine_ID);
-                    Unit_IDs[k++] = nMachine_ID;
-                    tn_Units = tn_ParentStations.Nodes.Add(strName);
-                    tn_Units.Tag = dataRow_Units;
-                    // if (expandLevelUnits) { tn_Units.Expand(); } else { tn_Units.Collapse(); }
-                    tn_Units.ImageIndex = tn_Units.SelectedImageIndex = 12;
-
-
-                    DataTable dtPositions = new DataTable();
-                    dtPositions = routingData.GetDataTableForPositions(nMachine_ID);
-                    foreach (DataRow dataRowPositions in dtPositions.Rows) // every routing position
-                    {
-                        int nRouting_Position_ID = Int32.Parse(dataRowPositions.ItemArray[0].ToString());
-                        int nMachine_Position_ID = Int32.Parse(dataRowPositions.ItemArray[1].ToString());
-                        if (nMachine_Position_ID > 0)
-                        {
-                            string strPositionName = myHC.GetNameFromID((int)Definition.SQLTables.MACHINE_POSITIONS, nMachine_Position_ID);
-                            tn_Positions = tn_Units.Nodes.Add(strPositionName);
-                            tn_Positions.Tag = dataRowPositions;
-                            tn_Positions.ImageIndex = tn_Positions.SelectedImageIndex = 2;
-                            //  if (expandLevelPositions) { tn_Positions.Expand(); } else { tn_Positions.Collapse(); }
-
-
-                            DataTable dtSampleTypes = new DataTable();
-                            dtSampleTypes = routingData.GetDataTableForSampleTypes(nRouting_Position_ID);
-                            foreach (DataRow dataRowSampleTypes in dtSampleTypes.Rows) // every sample type
-                            {
-                                int nSampleType_ID = Int32.Parse(dataRowSampleTypes.ItemArray[0].ToString());
-                                string strSampleTypeName = myHC.GetNameFromID((int)Definition.SQLTables.SAMPLE_TYPE_LIST, nSampleType_ID);
-                                tn_SampleTypes = tn_Positions.Nodes.Add(strSampleTypeName);
-                                tn_SampleTypes.Tag = dataRowSampleTypes;
-
-                                /* string strTypename = "nSampleType_ID" + nSampleType_ID;
-                                 if (!treeView_routing.ImageList.Images.ContainsKey(strTypename))
-                                 {
-                                     Image bm = null;
-                                     Size size = new Size(12, 12);
-                                     bm = myColorHelper.GetCircleBitmap(size, Color.Black);
-                                     treeView_routing.ImageList.Images.Add(strTypename, bm);
-                               
-                                 }
-                                 tn_SampleTypes.ImageIndex = treeView_routing.ImageList.Images.Count - 1;
-                                 tn_SampleTypes.ImageKey = strTypename;*/
-                                if (nSampleType_ID == 1)
-                                {
-                                    tn_SampleTypes.ImageIndex = tn_SampleTypes.SelectedImageIndex = 21;
-                                }
-                                else if (nSampleType_ID == 2)
-                                {
-                                    tn_SampleTypes.ImageIndex = tn_SampleTypes.SelectedImageIndex = 22;
-                                }
-                                else
-                                {
-                                    tn_SampleTypes.ImageIndex = tn_SampleTypes.SelectedImageIndex = 23;
-                                }
-
-                                if (expandLevelSampleTypes) { tn_SampleTypes.Expand(); } else { tn_SampleTypes.Collapse(); }
-
-                                int nIndex = 0;
-                                DataTable dtRoutingEntries = new DataTable();
-                                dtRoutingEntries = routingData.GetDataTableForRoutingEntries(nRouting_Position_ID, nSampleType_ID);
-                                foreach (DataRow dataRowRoutingEntries in dtRoutingEntries.Rows) // every condition entry
-                                {
-                                    nIndex++;
-                                    string strDescription = dataRowRoutingEntries.ItemArray[3].ToString();
-                                    string nNodeName = "Condition: " + nIndex.ToString();
-                                    if (strDescription.Length > 0) { nNodeName = strDescription; }
-                                    tn_RoutingEntries = tn_SampleTypes.Nodes.Add(nNodeName);
-                                    tn_RoutingEntries.Tag = dataRowRoutingEntries;
-                                    tn_RoutingEntries.ImageIndex = tn_RoutingEntries.SelectedImageIndex = 18;
-                                    tn_RoutingEntries.Expand();
-
-                                    try
-                                    {
-                                        int idRoutingPositionEntry = (int)dataRowRoutingEntries.ItemArray[0];
-                                        if (idRoutingPositionEntry == nRoutingPositionForTree) { treeView_routing.SelectedNode = tn_RoutingEntries; }
-                                    }
-                                    catch { }
-
-                                }
-                            }
-                        }
-                    }
-                    if (expandLevelUnits) { tn_Units.ExpandAll(); } else { tn_Units.Collapse(); }
-                    tn_ParentStations.Expand();
-                    if (nSelectedMachine_ID == nMachine_ID)
-                    {
-                        ExpandNodeInTreeByNode(tn_Units);
-                    }
-                }
-            }
-            treeView2.CollapseAll();
-        }
+        
 
         //build the tree on the left hand site 
         private void PopulateTree(TreeNodeCollection ParentNodes)
@@ -1237,7 +1100,7 @@ namespace LabManager
                 {
                     if (Node.Bounds.Contains(pt))
                     {
-                        treeView_routing.SelectedNode = Node;
+                        treeView2.SelectedNode = Node;
                         contextMenuForTree.MenuItems.Clear();
 
                         MenuItem newLevel0 = contextMenuForTree.MenuItems.Add("New station");
@@ -1259,7 +1122,7 @@ namespace LabManager
                                 if (checkIFUnitIsInTreeAllready(nMachine_ID)) { mi.Enabled = false; }
                             }
                         }
-                        contextMenuForTree.Show(treeView_routing, pt);
+                        contextMenuForTree.Show(treeView2, pt);
                         contextMenuForTree.Tag = newLevel0.Tag = Node;
                     }
                 }
@@ -1268,7 +1131,7 @@ namespace LabManager
                 {
                     if (Node.Bounds.Contains(pt))
                     {
-                        treeView_routing.SelectedNode = Node;
+                        treeView2.SelectedNode = Node;
                         contextMenuForTree.MenuItems.Clear();
 
                         /*
@@ -1304,7 +1167,7 @@ namespace LabManager
                         contextMenuForTree.MenuItems.Add("Delete", new EventHandler(Delete_Tree_Click));
 
 
-                        contextMenuForTree.Show(treeView_routing, pt);
+                        contextMenuForTree.Show(treeView2, pt);
                         contextMenuForTree.Tag = newLevel1.Tag = Node;
                     }
                 }
@@ -1312,7 +1175,7 @@ namespace LabManager
                 {
                     if (Node.Bounds.Contains(pt))
                     {
-                        treeView_routing.SelectedNode = Node;
+                        treeView2.SelectedNode = Node;
                         contextMenuForTree.MenuItems.Clear();
                         contextMenuForTree.MenuItems.Add("Expand", new EventHandler(Expand_Stations_Tree_Click));
                         contextMenuForTree.MenuItems.Add("-");
@@ -1332,7 +1195,7 @@ namespace LabManager
                         contextMenuForTree.MenuItems.Add("-");
                         contextMenuForTree.MenuItems.Add("Delete", new EventHandler(Delete_Tree_Click));
 
-                        contextMenuForTree.Show(treeView_routing, pt);
+                        contextMenuForTree.Show(treeView2, pt);
                         contextMenuForTree.Tag = newLevel2.Tag = Node;
                     }
                 }
@@ -1340,7 +1203,7 @@ namespace LabManager
                 {
                     if (Node.Bounds.Contains(pt))
                     {
-                        treeView_routing.SelectedNode = Node;
+                        treeView2.SelectedNode = Node;
                         contextMenuForTree.MenuItems.Clear();
                         MenuItem newLevel3 = contextMenuForTree.MenuItems.Add("New Condition", new EventHandler(New_Tree_Click_Level_Units));
                         contextMenuForTree.MenuItems.Add("-");
@@ -1359,7 +1222,7 @@ namespace LabManager
                         contextMenuForTree.MenuItems.Add("Delete", new EventHandler(Delete_Tree_Click));
 
 
-                        contextMenuForTree.Show(treeView_routing, pt);
+                        contextMenuForTree.Show(treeView2, pt);
                         contextMenuForTree.Tag = newLevel3.Tag = Node;
                     }
                 }
@@ -1367,7 +1230,7 @@ namespace LabManager
                 {
                     if (Node.Bounds.Contains(pt))
                     {
-                        treeView_routing.SelectedNode = Node;
+                        treeView2.SelectedNode = Node;
                         contextMenuForTree.MenuItems.Clear();
 
                         contextMenuForTree.MenuItems.Add("Copy", new EventHandler(Copy_Conditions_Tree_Click));
@@ -1383,7 +1246,7 @@ namespace LabManager
                         contextMenuForTree.MenuItems.Add("-");
                         contextMenuForTree.MenuItems.Add("Delete", new EventHandler(Delete_Tree_Click));
 
-                        contextMenuForTree.Show(treeView_routing, pt);
+                        contextMenuForTree.Show(treeView2, pt);
                         contextMenuForTree.Tag = Node;
                     }
                 }

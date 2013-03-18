@@ -472,7 +472,7 @@
             // pictureBox_Command
             // 
             this.pictureBox_Command.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.pictureBox_Command.Location = new System.Drawing.Point(672, 250);
+            this.pictureBox_Command.Location = new System.Drawing.Point(672, 242);
             this.pictureBox_Command.Name = "pictureBox_Command";
             this.pictureBox_Command.Size = new System.Drawing.Size(22, 22);
             this.pictureBox_Command.TabIndex = 13;
@@ -514,7 +514,7 @@
             // 
             this.c1Button_command_up.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.c1Button_command_up.Image = ((System.Drawing.Image)(resources.GetObject("c1Button_command_up.Image")));
-            this.c1Button_command_up.Location = new System.Drawing.Point(297, 247);
+            this.c1Button_command_up.Location = new System.Drawing.Point(297, 238);
             this.c1Button_command_up.Name = "c1Button_command_up";
             this.c1Button_command_up.Size = new System.Drawing.Size(24, 24);
             this.c1Button_command_up.TabIndex = 15;
@@ -527,7 +527,7 @@
             this.button_Command_Add.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.button_Command_Add.ImageIndex = 31;
             this.button_Command_Add.ImageList = this._imgList;
-            this.button_Command_Add.Location = new System.Drawing.Point(8, 246);
+            this.button_Command_Add.Location = new System.Drawing.Point(9, 238);
             this.button_Command_Add.Name = "button_Command_Add";
             this.button_Command_Add.Size = new System.Drawing.Size(73, 24);
             this.button_Command_Add.TabIndex = 10;
@@ -542,7 +542,7 @@
             this.button_Command_Save.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.button_Command_Save.ImageIndex = 10;
             this.button_Command_Save.ImageList = this._imgList;
-            this.button_Command_Save.Location = new System.Drawing.Point(164, 246);
+            this.button_Command_Save.Location = new System.Drawing.Point(164, 238);
             this.button_Command_Save.Name = "button_Command_Save";
             this.button_Command_Save.Size = new System.Drawing.Size(64, 24);
             this.button_Command_Save.TabIndex = 12;
@@ -557,7 +557,7 @@
             this.button_Command_Delete.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.button_Command_Delete.ImageIndex = 30;
             this.button_Command_Delete.ImageList = this._imgList;
-            this.button_Command_Delete.Location = new System.Drawing.Point(87, 246);
+            this.button_Command_Delete.Location = new System.Drawing.Point(91, 238);
             this.button_Command_Delete.Name = "button_Command_Delete";
             this.button_Command_Delete.Size = new System.Drawing.Size(67, 24);
             this.button_Command_Delete.TabIndex = 12;
@@ -570,7 +570,7 @@
             // 
             this.c1Button_command_down.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.c1Button_command_down.Image = ((System.Drawing.Image)(resources.GetObject("c1Button_command_down.Image")));
-            this.c1Button_command_down.Location = new System.Drawing.Point(267, 247);
+            this.c1Button_command_down.Location = new System.Drawing.Point(267, 238);
             this.c1Button_command_down.Name = "c1Button_command_down";
             this.c1Button_command_down.Size = new System.Drawing.Size(24, 24);
             this.c1Button_command_down.TabIndex = 15;
@@ -594,7 +594,7 @@
             "<MT Machinetagname  3>",
             "<MT Machinetagname  0 3>",
             "<TIMESTAMP>"});
-            this.comboBox_Choice.Location = new System.Drawing.Point(365, 246);
+            this.comboBox_Choice.Location = new System.Drawing.Point(365, 241);
             this.comboBox_Choice.Name = "comboBox_Choice";
             this.comboBox_Choice.Size = new System.Drawing.Size(176, 21);
             this.comboBox_Choice.TabIndex = 15;
@@ -603,7 +603,7 @@
             // 
             this.button_AddChoise.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.button_AddChoise.Image = global::LabManager.Properties.Resources.plus;
-            this.button_AddChoise.Location = new System.Drawing.Point(337, 246);
+            this.button_AddChoise.Location = new System.Drawing.Point(337, 238);
             this.button_AddChoise.Name = "button_AddChoise";
             this.button_AddChoise.Size = new System.Drawing.Size(22, 23);
             this.button_AddChoise.TabIndex = 16;
@@ -615,7 +615,7 @@
             // 
             this.button_ColorPicker.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.button_ColorPicker.Image = global::LabManager.Properties.Resources.coloricon;
-            this.button_ColorPicker.Location = new System.Drawing.Point(668, 265);
+            this.button_ColorPicker.Location = new System.Drawing.Point(668, 269);
             this.button_ColorPicker.Name = "button_ColorPicker";
             this.button_ColorPicker.Size = new System.Drawing.Size(22, 23);
             this.button_ColorPicker.TabIndex = 19;
@@ -635,7 +635,7 @@
             "Var2",
             "Var3",
             "Var4"});
-            this.comboBox_Command_SampleProgram.Location = new System.Drawing.Point(743, 267);
+            this.comboBox_Command_SampleProgram.Location = new System.Drawing.Point(743, 271);
             this.comboBox_Command_SampleProgram.Name = "comboBox_Command_SampleProgram";
             this.comboBox_Command_SampleProgram.Size = new System.Drawing.Size(39, 21);
             this.comboBox_Command_SampleProgram.TabIndex = 10;
@@ -651,7 +651,7 @@
             "",
             "<WS SampleID>",
             "<WS ParentSampleID>"});
-            this.comboBox_CommandValue2.Location = new System.Drawing.Point(562, 246);
+            this.comboBox_CommandValue2.Location = new System.Drawing.Point(562, 241);
             this.comboBox_CommandValue2.Name = "comboBox_CommandValue2";
             this.comboBox_CommandValue2.Size = new System.Drawing.Size(45, 21);
             this.comboBox_CommandValue2.TabIndex = 14;
@@ -663,7 +663,7 @@
             this.comboBox_Command_MachineList.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBox_Command_MachineList.Items.AddRange(new object[] {
             ""});
-            this.comboBox_Command_MachineList.Location = new System.Drawing.Point(696, 267);
+            this.comboBox_Command_MachineList.Location = new System.Drawing.Point(696, 271);
             this.comboBox_Command_MachineList.Name = "comboBox_Command_MachineList";
             this.comboBox_Command_MachineList.Size = new System.Drawing.Size(41, 21);
             this.comboBox_Command_MachineList.TabIndex = 13;
@@ -672,7 +672,7 @@
             // numericUpDown_Commands
             // 
             this.numericUpDown_Commands.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.numericUpDown_Commands.Location = new System.Drawing.Point(613, 246);
+            this.numericUpDown_Commands.Location = new System.Drawing.Point(613, 242);
             this.numericUpDown_Commands.Maximum = new decimal(new int[] {
             -2147483648,
             0,
