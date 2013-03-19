@@ -42,7 +42,8 @@ namespace Routing
         public void createViewForRightTree()
         {
             myHC.return_SQL_Statement("drop view tableView1");
-            String sqlStatement = "create view tableView1 as select t1.commandValue1,t1.commandValue0,t1.commandValue2,t1.Description,t2.SampleType_ID,t2.Position_ID,t2.idrouting_position_entries,t3.Machine_ID,t3.Machine_Position_ID   from routing_commands as t1 join routing_position_entries as t2 on t1.RoutingPositionEntry_ID = t2.idrouting_position_entries join routing_positions as t3 on t2.Position_ID = t3.idrouting_positions";
+           // String sqlStatement = "create view tableView1 as select t1.commandValue1,t1.commandValue0,t1.commandValue2,t1.Description,t2.SampleType_ID,t2.Position_ID,t2.idrouting_position_entries,t3.Machine_ID,t3.Machine_Position_ID   from routing_commands as t1 join routing_position_entries as t2 on t1.RoutingPositionEntry_ID = t2.idrouting_position_entries join routing_positions as t3 on t2.Position_ID = t3.idrouting_positions";
+            String sqlStatement = "create view tableView1 as select t1.commandValue1,t1.commandValue0,t1.commandValue2,t1.Description,t2.SampleType_ID,t2.Position_ID,t2.idrouting_position_entries, t3.Machine_ID ,t3.Machine_Position_ID,t4.Value,t4.ValueName,t4.description as description2  from  routing_commands as t1 join routing_position_entries as t2 on t1.RoutingPositionEntry_ID = t2.idrouting_position_entries join routing_positions as t3 on t2.Position_ID = t3.idrouting_positions join routing_conditions as t4 on t4.RoutingPositionEntry_ID = t2.idrouting_position_entries"; 
             myHC.return_SQL_Statement(sqlStatement);
         }
 
