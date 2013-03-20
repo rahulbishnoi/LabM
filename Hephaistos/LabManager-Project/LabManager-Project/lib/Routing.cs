@@ -57,7 +57,7 @@ namespace Routing
             string SQL_StatementUnits;
             try
             {
-                SQL_StatementUnits = "SELECT DISTINCT Machine_ID from tableView1 where (commandValue1=\'" + parm + "\') OR (commandValue0=\'" + parm + "\') OR (commandValue2=\'" + parm + "\') OR (description=\'" + parm + "\') UNION SELECT DISTINCT Machine_ID from tableView2 where  (Value=\'" + parm + "\') OR (ValueName=\'" + parm + "\') OR (description=\'" + parm + "\')";
+                SQL_StatementUnits = "SELECT DISTINCT Machine_ID from tableView1 where (commandValue1 LIKE \'%" + parm + "%\') OR (commandValue0 LIKE \'%" + parm + "%\') OR (commandValue2 LIKE\'%" + parm + "%\') OR (description LIKE \'%" + parm + "%\') UNION SELECT DISTINCT Machine_ID from tableView2 where  (Value LIKE \'%" + parm + "%\') OR (ValueName LIKE \'%" + parm + "%\') OR (description LIKE \'%" + parm + "%\')";
                 DataSet dsUnits = new DataSet();
                 dsUnits.Clear();
                 dsUnits = myHC.GetDataSetFromSQLCommand(SQL_StatementUnits);
@@ -110,7 +110,7 @@ namespace Routing
             string SQL_StatementPositions;
             try
             {
-                SQL_StatementPositions = "select DISTINCT Position_ID,Machine_Position_ID from tableView1 where Machine_ID =" + nMachine_ID + " AND (commandValue1=\'" + parm + "\' OR commandValue0=\'" + parm + "\' OR commandValue2=\'" + parm + "\' OR description=\'" + parm + "\') UNION select DISTINCT Position_ID,Machine_Position_ID from tableView2 where Machine_ID =" + nMachine_ID + " AND (Value=\'" + parm + "\' OR ValueName=\'" + parm + "\' OR  description=\'" + parm + "\')"; 
+                SQL_StatementPositions = "select DISTINCT Position_ID,Machine_Position_ID from tableView1 where Machine_ID =" + nMachine_ID + " AND (commandValue1 LIKE \'%" + parm + "%\' OR commandValue0 LIKE \'%" + parm + "%\' OR commandValue2 LIKE \'%" + parm + "%\' OR description LIKE \'%" + parm + "%\') UNION select DISTINCT Position_ID,Machine_Position_ID from tableView2 where Machine_ID =" + nMachine_ID + " AND (Value LIKE \'%" + parm + "%\' OR ValueName LIKE \'%" + parm + "%\' OR  description LIKE \'%" + parm + "%\')"; 
                 DataSet dsPositions = new DataSet();
                 dsPositions.Clear();
                 dsPositions = myHC.GetDataSetFromSQLCommand(SQL_StatementPositions);
@@ -126,7 +126,7 @@ namespace Routing
             string SQL_StatementSampleType;
             try
             {
-                SQL_StatementSampleType = "select DISTINCT SampleType_ID from tableView1 where Position_ID = " + nRouting_Position_ID + " AND Machine_ID=" + nMachine_ID + " AND (commandValue1=\'" + parm + "\' OR commandValue0=\'" + parm + "\' OR commandValue2=\'" + parm + "\' OR description=\'" + parm + "\') UNION select DISTINCT SampleType_ID from tableView2 where Position_ID = " + nRouting_Position_ID + " AND Machine_ID=" + nMachine_ID + " AND (Value=\'" + parm + "\' OR ValueName=\'" + parm + "\'  OR description=\'" + parm + "\')";
+                SQL_StatementSampleType = "select DISTINCT SampleType_ID from tableView1 where Position_ID = " + nRouting_Position_ID + " AND Machine_ID=" + nMachine_ID + " AND (commandValue1 LIKE \'%" + parm + "%\' OR commandValue0 LIKE \'%" + parm + "%\' OR commandValue2 LIKE \'%" + parm + "%\' OR description LIKE \'%" + parm + "%\') UNION select DISTINCT SampleType_ID from tableView2 where Position_ID = " + nRouting_Position_ID + " AND Machine_ID=" + nMachine_ID + " AND (Value LIKE \'%" + parm + "%\' OR ValueName LIKE \'%" + parm + "%\'  OR description LIKE \'%" + parm + "%\')";
                 DataSet dsSampleTypes = new DataSet();
                 dsSampleTypes.Clear();
                 dsSampleTypes = myHC.GetDataSetFromSQLCommand(SQL_StatementSampleType);
