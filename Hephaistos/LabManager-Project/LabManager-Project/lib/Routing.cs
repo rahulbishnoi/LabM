@@ -42,9 +42,13 @@ namespace Routing
         public void createViewForRightTree()
         {
             myHC.return_SQL_Statement("drop view tableView1");
-           // String sqlStatement = "create view tableView1 as select t1.commandValue1,t1.commandValue0,t1.commandValue2,t1.Description,t2.SampleType_ID,t2.Position_ID,t2.idrouting_position_entries,t3.Machine_ID,t3.Machine_Position_ID   from routing_commands as t1 join routing_position_entries as t2 on t1.RoutingPositionEntry_ID = t2.idrouting_position_entries join routing_positions as t3 on t2.Position_ID = t3.idrouting_positions";
-            String sqlStatement = "create view tableView1 as select t1.commandValue1,t1.commandValue0,t1.commandValue2,t1.Description,t2.SampleType_ID,t2.Position_ID,t2.idrouting_position_entries, t3.Machine_ID ,t3.Machine_Position_ID,t4.Value,t4.ValueName,t4.description as description2  from  routing_commands as t1 join routing_position_entries as t2 on t1.RoutingPositionEntry_ID = t2.idrouting_position_entries join routing_positions as t3 on t2.Position_ID = t3.idrouting_positions join routing_conditions as t4 on t4.RoutingPositionEntry_ID = t2.idrouting_position_entries"; 
+            myHC.return_SQL_Statement("drop view tableView2");
+            String sqlStatement = "create view tableView1 as select t1.commandValue1,t1.commandValue0,t1.commandValue2,t1.Description,t2.SampleType_ID,t2.Position_ID,t2.idrouting_position_entries,t3.Machine_ID,t3.Machine_Position_ID   from routing_commands as t1 join routing_position_entries as t2 on t1.RoutingPositionEntry_ID = t2.idrouting_position_entries join routing_positions as t3 on t2.Position_ID = t3.idrouting_positions";
+            String sqlStatement1 = "create view tableView2 as select t1.Value,t1.ValueName,t1.Description,t2.SampleType_ID,t2.Position_ID,t2.idrouting_position_entries,t3.Machine_ID,t3.Machine_Position_ID   from routing_conditions as t1 join routing_position_entries as t2 on t1.RoutingPositionEntry_ID = t2.idrouting_position_entries join routing_positions as t3 on t2.Position_ID = t3.idrouting_positions";
+            //String sqlStatement = "create view tableView1 as select t1.commandValue1,t1.commandValue0,t1.commandValue2,t1.Description,t2.SampleType_ID,t2.Position_ID,t2.idrouting_position_entries, t3.Machine_ID ,t3.Machine_Position_ID,t4.Value,t4.ValueName,t4.description as description2  from  routing_commands as t1 join routing_position_entries as t2 on t1.RoutingPositionEntry_ID = t2.idrouting_position_entries join routing_positions as t3 on t2.Position_ID = t3.idrouting_positions join routing_conditions as t4 on t4.RoutingPositionEntry_ID = t2.idrouting_position_entries"; 
+
             myHC.return_SQL_Statement(sqlStatement);
+            myHC.return_SQL_Statement(sqlStatement1);
         }
 
         public DataTable GetDatatableForUnitsForSearch(String parm)
@@ -53,7 +57,7 @@ namespace Routing
             string SQL_StatementUnits;
             try
             {
-                SQL_StatementUnits = "SELECT DISTINCT Machine_ID from tableView1 where (commandValue1=\'"+parm+"\') OR (commandValue0=\'"+parm+"\') OR (commandValue2=\'"+parm+"\') OR (description=\'"+parm+"\')";
+                SQL_StatementUnits = "SELECT DISTINCT Machine_ID from tableView1 where (commandValue1=\'" + parm + "\') OR (commandValue0=\'" + parm + "\') OR (commandValue2=\'" + parm + "\') OR (description=\'" + parm + "\') UNION SELECT DISTINCT Machine_ID from tableView2 where  (Value=\'" + parm + "\') OR (ValueName=\'" + parm + "\') OR (description=\'" + parm + "\')";
                 DataSet dsUnits = new DataSet();
                 dsUnits.Clear();
                 dsUnits = myHC.GetDataSetFromSQLCommand(SQL_StatementUnits);
@@ -106,7 +110,7 @@ namespace Routing
             string SQL_StatementPositions;
             try
             {
-                SQL_StatementPositions = "select DISTINCT Position_ID,Machine_Position_ID from tableView1 where Machine_ID ="+nMachine_ID+ " AND (commandValue1=\'"+parm+"\' OR commandValue0=\'"+parm+"\' OR commandValue2=\'"+parm+"\' OR description=\'"+parm+"\')";
+                SQL_StatementPositions = "select DISTINCT Position_ID,Machine_Position_ID from tableView1 where Machine_ID =" + nMachine_ID + " AND (commandValue1=\'" + parm + "\' OR commandValue0=\'" + parm + "\' OR commandValue2=\'" + parm + "\' OR description=\'" + parm + "\') UNION select DISTINCT Position_ID,Machine_Position_ID from tableView2 where Machine_ID =" + nMachine_ID + " AND (Value=\'" + parm + "\' OR ValueName=\'" + parm + "\' OR  description=\'" + parm + "\')"; 
                 DataSet dsPositions = new DataSet();
                 dsPositions.Clear();
                 dsPositions = myHC.GetDataSetFromSQLCommand(SQL_StatementPositions);
@@ -122,7 +126,7 @@ namespace Routing
             string SQL_StatementSampleType;
             try
             {
-                SQL_StatementSampleType = "select DISTINCT SampleType_ID from tableView1 where Position_ID = "+nRouting_Position_ID+" AND Machine_ID=" + nMachine_ID + " AND (commandValue1=\'" + parm + "\' OR commandValue0=\'" + parm + "\' OR commandValue2=\'" + parm + "\' OR description=\'" + parm + "\')";
+                SQL_StatementSampleType = "select DISTINCT SampleType_ID from tableView1 where Position_ID = " + nRouting_Position_ID + " AND Machine_ID=" + nMachine_ID + " AND (commandValue1=\'" + parm + "\' OR commandValue0=\'" + parm + "\' OR commandValue2=\'" + parm + "\' OR description=\'" + parm + "\') UNION select DISTINCT SampleType_ID from tableView2 where Position_ID = " + nRouting_Position_ID + " AND Machine_ID=" + nMachine_ID + " AND (Value=\'" + parm + "\' OR ValueName=\'" + parm + "\'  OR description=\'" + parm + "\')";
                 DataSet dsSampleTypes = new DataSet();
                 dsSampleTypes.Clear();
                 dsSampleTypes = myHC.GetDataSetFromSQLCommand(SQL_StatementSampleType);
